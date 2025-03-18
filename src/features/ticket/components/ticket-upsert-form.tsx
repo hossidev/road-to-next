@@ -15,7 +15,7 @@ type TicketUpsertFormProps = {
 const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
   const [actionState, action] = useActionState(
     upsertTicket.bind(null, ticket?.id),
-    { message: "" }
+    { message: "", fieldErrors: {} }
   );
 
   return (
@@ -29,6 +29,9 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("title") as string) ?? ticket?.title
         }
       />
+      <span className="text-xs text-red-500">
+        {actionState.fieldErrors?.title?.[0]}
+      </span>
 
       <Label htmlFor="content">Content</Label>
       <Textarea
@@ -38,6 +41,9 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("content") as string) ?? ticket?.content
         }
       />
+      <span className="text-xs text-red-500">
+        {actionState.fieldErrors?.content?.[0]}
+      </span>
 
       <SubmitButton label={ticket ? "Edit" : "Create"} />
 
