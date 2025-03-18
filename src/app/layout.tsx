@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
           >
             {children}
           </main>
+          <Toaster expand />
         </ThemeProvider>
       </body>
     </html>
