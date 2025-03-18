@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { TicketItem } from "@/features/ticket/components/ticket-item";
 import { getTicket } from "@/features/ticket/queries/get-ticket";
-
 type TicketPageProps = {
   params: Promise<{
     ticketId: string;
@@ -16,9 +15,11 @@ const TicketPage = async ({ params }: TicketPageProps) => {
   }
 
   return (
-    <div className="flex justify-center animate-fade">
-      <TicketItem ticket={ticket} isDetail={true} />
-    </div>
+    
+      <div className="flex justify-center animate-fade">
+        <TicketItem ticket={ticket} isDetail={true} />
+      </div>
+    
   );
 };
 
